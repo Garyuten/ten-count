@@ -227,7 +227,7 @@
                 clearTimeout(fadeTimeout);
                 isRunning = false;
                 
-                const finalTime = parseFloat(timerElement.textContent);
+                const finalTime = (Date.now() - startTime) / 1000;
                 const score = calculateScore(finalTime);
                 
                 timerElement.classList.remove('fade-out');
