@@ -1,41 +1,148 @@
-/* ランキング表示用スタイル */
+/* --- SCSS構造で整理 --- */
+
+
 .ranking-list {
-  list-style: none;
   padding: 0;
-  margin: 1em auto;
-  display: block;
-  width: 160px;
-}
-.ranking-list li {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.5em;
-  font-size: 1.1em;
-}
-.ranking-list .rank {
-  font-weight: bold;
-  margin-right: 0.7em;
-  color: #2196f3;
-}
-.ranking-list .score {
-  font-family: 'DS-Digital', monospace;
-  margin-right: 0.7em;
-  text-align: right;
-  flex-grow: 1;
+  margin: 0 auto;
+  list-style: none;
+  width: 240px;
+
+  .ranking-item {
+    display: grid;
+    grid-template-columns:  2rem 4rem 8rem 7rem 7rem;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0.1rem 0.2rem;
+    border-bottom: 1px solid #eee;
+
+    &.ranking-item-1 {
+      font-size: 1.4rem;
+    }
+    &.ranking-item-2 {
+      font-size: 1.3rem;
+    }
+    &.ranking-item-3 {
+      font-size: 1.2rem;
+    }
+
+    .rank {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.4rem;
+      font-family: inherit;
+      font-weight: bold;
+      box-sizing: border-box;
+      border: none;
+      text-align: right;
+
+       i {
+        display: none;
+      }
+
+      &.rank-1 {
+        font-size: 1.5em;
+      }
+      &.rank-2 {
+        font-size: 1.25em;
+      }
+      &.rank-3 {
+        font-size: 1.15em;
+      }
+      &.rank-other {
+        color: #aaa;
+        font-size: 1rem;
+        font-weight: normal;
+        box-shadow: none;
+      }
+      .crown, .medal {
+        font-size: 1.2rem;
+        vertical-align: middle;
+      }
+    }
+    .time {
+      font-size: 1.4em;
+      font-family: 'DS-Digital', monospace;
+      text-align: right;
+    }
+    .diff {
+      display: none;
+      font-size: 0.95em;
+      color: #555;
+      text-align: right;
+      .score {
+        font-size: 0.85em;
+        color: #1976d2;
+        font-weight: bold;
+      }
+      .unit {
+        font-size: 0.7em;
+        color: #888;
+      }
+    }
+    .name {
+      text-align: left;
+      /* font-weight: bold; */
+      max-width: 7em;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding-left: .4rem;
+    }
+    .date {
+      font-size: 1em;
+      color: #aaa;
+      text-align: right;
+      display: none;
+    }
+    .nowrap {
+      white-space: nowrap;
+    }
+  }
 }
 
-.ranking-list .score .unit {
-  font-size: 0.8em;
-  font-family: inherit;
+/* ランクインアニメーション（ファミコン・アーケード風） */
+.ranking-item.rank-in {
+  animation: rankin-flash 1.2s cubic-bezier(.4,0,.2,1) 0s infinite alternate;
+  animation-fill-mode: both;
+  z-index: 2;
+  position: relative;
 }
-.ranking-list .date {
-  display: none;
-}
-.ranking-stats {
-  margin-top: 1em;
-  font-size: 1em;
-  color: #333;
-}
-.ranking-stats b {
-  color: #e91e63;
+@keyframes rankin-flash {
+  0% {
+    filter: brightness(2) drop-shadow(0 0 8px #fff700);
+    background: #fffbe6;
+    transform: scale(1.2) rotate(-2deg);
+    outline: 3px solid #ffe066;
+  }
+  15% {
+    filter: brightness(1.5) drop-shadow(0 0 12px #ffe066);
+    background: #fffbe6;
+    transform: scale(1.08) rotate(2deg);
+    outline: 2px solid #ffe066;
+  }
+  30% {
+    filter: brightness(1.2) drop-shadow(0 0 8px #ffe066);
+    background: #fffbe6;
+    transform: scale(1.04) rotate(-1deg);
+    outline: 1.5px solid #ffe066;
+  }
+  50% {
+    filter: brightness(1.5) drop-shadow(0 0 16px #fff700);
+    background: #fffbe6;
+    transform: scale(1.12) rotate(1deg);
+    outline: 2.5px solid #ffe066;
+  }
+  70% {
+    filter: brightness(1.1) drop-shadow(0 0 4px #ffe066);
+    background: #fffbe6;
+    transform: scale(1.02) rotate(-1deg);
+    outline: 1px solid #ffe066;
+  }
+  100% {
+    filter: none;
+    background: none;
+    transform: scale(1) rotate(0);
+    outline: none;
+  }
 }

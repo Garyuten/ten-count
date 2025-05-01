@@ -15,28 +15,32 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
+.game-title{
+    margin-bottom: 1rem;
+    color: #333;
+}
 .timer {
-    font-size: 4rem;
-    margin: 2rem 0;
+    font-size: 8rem;
     font-weight: normal;
     color: #333;
     font-family: 'DS-Digital', monospace;
     margin-left: auto;
     margin-right: auto;
     display: grid;
-    grid-template-columns: 2rem 2rem 1rem 2rem 2rem;
+    grid-template-columns: 1fr 1fr 0.5fr 1fr 1fr;
     gap: 0;
     width: fit-content;
 }
 .timer div {
-    text-align: center;
+    text-align: right;
 }
 .timer .dot {
     width: 1rem;
 }
 .timer-container {
     position: relative;
-    height: 6rem;
+    margin: 2rem 0;
+    height: 8rem;
     display: flex;
     align-items: center;
     justify-content: center;

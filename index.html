@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>10秒ピッタリゲーム</h1>
+        <h1 class="game-title">10秒ピッタリゲーム</h1>
         <div class="timer-container">
             <div id="timer" class="timer" role="timer" aria-label="経過時間">
                 <div>0</div>
@@ -21,7 +21,15 @@
             </div>
         </div>
         <div class="controls">
-            <button id="actionBtn" class="button">スタート</button>
+            <button
+                id="actionBtn"
+                class="button"
+                data-action="start"
+                data-label-start="スタート"
+                data-label-stop="ココ！"
+                data-label-retry="もう一度"
+                aria-label="スタート"
+            >スタート</button>
         </div>
         <div id="result" class="result"></div>
         <div id="ranking"></div>
