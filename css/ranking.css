@@ -1,0 +1,41 @@
+/* ランキング表示用スタイル */
+.ranking-list {
+  list-style: none;
+  padding: 0;
+  margin: 1em auto;
+  display: block;
+  width: 160px;
+}
+.ranking-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5em;
+  font-size: 1.1em;
+}
+.ranking-list .rank {
+  font-weight: bold;
+  margin-right: 0.7em;
+  color: #2196f3;
+}
+.ranking-list .score {
+  font-family: 'DS-Digital', monospace;
+  margin-right: 0.7em;
+  text-align: right;
+  flex-grow: 1;
+}
+
+.ranking-list .score .unit {
+  font-size: 0.8em;
+  font-family: inherit;
+}
+.ranking-list .date {
+  display: none;
+}
+.ranking-stats {
+  margin-top: 1em;
+  font-size: 1em;
+  color: #333;
+}
+.ranking-stats b {
+  color: #e91e63;
+}

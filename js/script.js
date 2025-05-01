@@ -1,3 +1,6 @@
+import { RankingStorage } from './components/storage.js';
+import { renderRanking } from './components/ranking.js';
+
 let startTime;
 let timerInterval;
 let fadeTimeout;
@@ -56,6 +59,11 @@ function calculateScore(time) {
     return score;
 }
 
+function showRanking() {
+    const rankingContainer = document.getElementById('ranking');
+    renderRanking(rankingContainer);
+}
+
 actionBtn.addEventListener('click', () => {
     if (actionBtn.textContent === 'スタート') {
         // 既存のタイマーをすべてクリア
@@ -109,9 +117,16 @@ actionBtn.addEventListener('click', () => {
         if (Math.abs(finalTime - 10) < 0.1) {
             resultElement.innerHTML += '<div class="perfect">すごい！ピッタリ！</div>';
         }
+        // スコア保存＆ランキング表示
+        RankingStorage.saveScore(score);
+        showRanking();
 
     } else {
         // リトライ
         resetTimers();
+        showRanking();
     }
 });
+
+// 初回表示時にもランキングを表示
+showRanking();
