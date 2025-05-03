@@ -18,9 +18,12 @@ export const RankingStorage = {
   // params: { time: number, diff: number, date: string, name: string }
   saveScore({ time, diff, date, name }) {
     const data = this.getAll();
+    // 数値を小数点以下3桁に制限
+    const formattedTime = parseFloat(time.toFixed(3));
+    const formattedDiff = parseFloat(diff.toFixed(3));
     // 一意なIDを生成（date+name+timeで十分ユニーク）
-    const id = `${date}_${name}_${time}`;
-    data.unshift({ id, time, diff, date, name });
+    const id = `${date}_${name}_${formattedTime}`;
+    data.unshift({ id, time: formattedTime, diff: formattedDiff, date, name });
     // 直近10件のみ保存
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data.slice(0, 10)));
   },
@@ -39,8 +42,8 @@ export const RankingStorage = {
         return { ...item, id };
       }
       // 旧データ(score, date)→新データ(time, diff, date, name, id)
-      const time = typeof item.score === "number" ? item.score : 0;
-      const diff = Math.abs(time - 10);
+      const time = typeof item.score === "number" ? parseFloat(item.score.toFixed(3)) : 0;
+      const diff = parseFloat(Math.abs(time - 10).toFixed(3));
       const id = `${item.date}_あなた_${time}`;
       return { id, time, diff, date: item.date, name: "あなた" };
     });

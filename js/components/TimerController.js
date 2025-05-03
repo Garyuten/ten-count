@@ -66,7 +66,7 @@ export class TimerController {
     clearTimeout(this.fadeTimeout);
     this.isRunning = false;
     const finalTime = CONFIG.FINAL_TIME_MAX;
-    const diff = Math.abs(finalTime - CONFIG.TARGET_TIME);
+    const diff = parseFloat(Math.abs(finalTime - CONFIG.TARGET_TIME).toFixed(3));
     this.ui.updateTimerDisplay(finalTime);
     this.ui.timerElement.classList.remove("fade-out");
     this.ui.timerElement.style.display = "";
@@ -90,7 +90,7 @@ export class TimerController {
     clearTimeout(this.fadeTimeout);
     this.isRunning = false;
     const finalTime = (Date.now() - this.startTime) / 1000;
-    const diff = Math.abs(finalTime - CONFIG.TARGET_TIME);
+    const diff = parseFloat(Math.abs(finalTime - CONFIG.TARGET_TIME).toFixed(3));
     this.ui.updateTimerDisplay(finalTime);
     this.ui.timerElement.classList.remove("fade-out");
     this.ui.timerElement.style.display = "";
