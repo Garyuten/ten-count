@@ -1,4 +1,8 @@
-// スコア保存・取得・統計管理用モジュール
+/**
+ * storage.js
+ *
+ * スコア保存・取得・統計管理モジュール
+ */
 const STORAGE_KEY = 'tenCountRankings';
 
 export const RankingStorage = {

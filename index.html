@@ -7,6 +7,7 @@
     <link href="https://fonts.cdnfonts.com/css/ds-digital" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/ranking.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.43.4/dist/umd/supabase.min.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -32,8 +33,35 @@
             >スタート</button>
         </div>
         <div id="result" class="result"></div>
-        <div id="ranking"></div>
+
+<section id="ranking-registration" class="hidden">
+             <h2>ランキング登録</h2>
+<div id="form-message" class="form-message hidden"></div>
+             <form id="ranking-form">
+                 <input type="text" id="ranking-name" name="name" placeholder="お名前を入れてください。">
+                 <button type="submit" id="ranking-submit">送信</button>
+             </form>
+         </section>
+
+        <section id="ranking-root">
+            <h2>ランキング</h2>
+            <div class="ranking-tabs">
+                <button data-period="weekly">週別</button>
+                <button data-period="daily">日別</button>
+                <button data-period="you" class="current">あなた</button>
+            </div>
+            <div class="ranking-content">
+                <div id="my-ranking" class="tab-content"></div>
+                <div id="weekly-ranking" class="tab-content"></div>
+                <div id="daily-ranking" class="tab-content"></div>
+            </div>
+        </section>
     </div>
-    <script src="js/script.js" type="module" defer></script>
+    <script>
+      // ここにSupabaseのURLとAPI Keyを設定
+      window.SUPABASE_URL = 'https://bmmpnswbhsbvbaakhnhr.supabase.co';
+      window.SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtbXBuc3diaHNidmJhYWtobmhyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDYwOTg0NzcsImV4cCI6MjA2MTY3NDQ3N30.Txl68i4gZcAeAY18QROc_vDhbpsSycOjBbWTbOwHzDg';
+    </script>
+    <script src="js/app.js" type="module" defer></script>
 </body>
 </html>
